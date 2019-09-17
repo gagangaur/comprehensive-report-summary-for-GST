@@ -1,10 +1,11 @@
 import xlrd
-location = ("E:\gstcalc\orders.xlsx")
+location = ("E:\gstcalc\order.xlsx")
 wb = xlrd.open_workbook(location)
 sheet = wb.sheet_by_index(0)
 report,temp,final=[],[],[]
 #print(sheet.nrows)
 for i in range(sheet.nrows):
+# for i in range(20):
     if sheet.cell(i,7).value == "Delivered":
         temp.append(sheet.cell(i,46).value)
         temp.append(sheet.cell(i,20).value)
@@ -15,6 +16,7 @@ for i in range(sheet.nrows):
         final.append(temp)
         #print(temp)
         temp=[] 
+# print(final)
 states=set()
 selling_price,sgst,cgst,igst,seller_invoice_amount=0,0,0,0,0
 for i in final:
